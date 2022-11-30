@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Learning.Infrastructure.Conventions;
 
-internal class StringMaxLengthConvention : IModelFinalizingConvention
+internal sealed class StringMaxLengthConvention : IModelFinalizingConvention
 {
     private readonly int _maxLength;
 
