@@ -1,6 +1,6 @@
 ﻿namespace Learning.Domain.Entities;
 
-public class Module
+public sealed class Module
 {
     public int ID { get; set; }
 

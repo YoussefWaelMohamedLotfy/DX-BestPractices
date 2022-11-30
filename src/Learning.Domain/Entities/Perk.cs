@@ -1,6 +1,6 @@
 ﻿namespace Learning.Domain.Entities;
 
-public class Perk
+public sealed class Perk
 {
     public int ID { get; set; }
 

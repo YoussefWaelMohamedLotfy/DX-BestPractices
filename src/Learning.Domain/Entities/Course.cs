@@ -1,6 +1,6 @@
 ﻿namespace Learning.Domain.Entities;
 
-public class Course
+public sealed class Course
 {
     public int ID { get; set; }
 

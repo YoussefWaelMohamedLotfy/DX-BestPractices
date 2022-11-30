@@ -1,6 +1,6 @@
 ﻿namespace Learning.Domain.Entities;
 
-public class Subscription
+public sealed class Subscription
 {
     public int ID { get; set; }
 

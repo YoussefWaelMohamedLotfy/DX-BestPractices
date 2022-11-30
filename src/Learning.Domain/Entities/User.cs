@@ -11,12 +11,12 @@ public abstract class User
     public List<Course> CoursesEnrolled { get; set; } = default!;
 }
 
-public class NormalUser : User
+public sealed class NormalUser : User
 {
     public int NumberOfLogins { get; set; }
 }
 
-public class PremiumUser : User
+public sealed class PremiumUser : User
 {
     public string? UserName { get; set; }
 
