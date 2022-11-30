@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
-
 using Learning.Domain.Entities;
-
+using Learning.Infrastructure.Conventions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Learning.Infrastructure.Data;
@@ -20,5 +19,11 @@ public sealed class AppDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
+    }
+
+    protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+    {
+        configurationBuilder.Conventions.Add(_ => new StringMaxLengthConvention(20));
+        configurationBuilder.Conventions.Add(_ => new DiscriminatorLengthConvention());
     }
 }

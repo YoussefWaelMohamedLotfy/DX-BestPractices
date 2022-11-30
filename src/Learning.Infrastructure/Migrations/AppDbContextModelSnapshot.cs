@@ -39,9 +39,11 @@ namespace Learning.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
@@ -59,9 +61,11 @@ namespace Learning.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Description")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Order")
@@ -81,6 +85,7 @@ namespace Learning.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<float>("Points")
@@ -103,6 +108,7 @@ namespace Learning.Infrastructure.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("NormalUserID")
@@ -129,9 +135,11 @@ namespace Learning.Infrastructure.Migrations
 
                     b.Property<string>("Discriminator")
                         .IsRequired()
+                        .HasMaxLength(11)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FullName")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.HasKey("ID");
@@ -158,9 +166,11 @@ namespace Learning.Infrastructure.Migrations
                     b.HasBaseType("Learning.Domain.Entities.User");
 
                     b.Property<string>("Bio")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserName")
+                        .HasMaxLength(20)
                         .HasColumnType("TEXT");
 
                     b.HasDiscriminator().HasValue("PremiumUser");
