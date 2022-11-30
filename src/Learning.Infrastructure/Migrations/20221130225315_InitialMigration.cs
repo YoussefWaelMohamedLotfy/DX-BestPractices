@@ -17,8 +17,8 @@ namespace Learning.Infrastructure.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true)
+                    Name = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -31,12 +31,12 @@ namespace Learning.Infrastructure.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FullName = table.Column<string>(type: "TEXT", nullable: true),
+                    FullName = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     DateOfBirth = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
-                    Discriminator = table.Column<string>(type: "TEXT", nullable: false),
+                    Discriminator = table.Column<string>(type: "TEXT", maxLength: 11, nullable: false),
                     NumberOfLogins = table.Column<int>(type: "INTEGER", nullable: true),
-                    UserName = table.Column<string>(type: "TEXT", nullable: true),
-                    Bio = table.Column<string>(type: "TEXT", nullable: true)
+                    UserName = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    Bio = table.Column<string>(type: "TEXT", maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,8 +49,8 @@ namespace Learning.Infrastructure.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
-                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     Order = table.Column<int>(type: "INTEGER", nullable: false),
                     CourseID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -95,7 +95,7 @@ namespace Learning.Infrastructure.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     Points = table.Column<float>(type: "REAL", nullable: false),
                     PremiumUserID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -116,7 +116,7 @@ namespace Learning.Infrastructure.Migrations
                 {
                     ID = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: true),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 20, nullable: true),
                     Rank = table.Column<float>(type: "REAL", nullable: false),
                     NormalUserID = table.Column<int>(type: "INTEGER", nullable: false)
                 },
