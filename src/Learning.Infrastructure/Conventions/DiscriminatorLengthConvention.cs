@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Learning.Infrastructure.Conventions;
 
-internal class DiscriminatorLengthConvention : IModelFinalizingConvention
+internal sealed class DiscriminatorLengthConvention : IModelFinalizingConvention
 {
     public void ProcessModelFinalizing(IConventionModelBuilder modelBuilder, IConventionContext<IConventionModelBuilder> context)
     {
