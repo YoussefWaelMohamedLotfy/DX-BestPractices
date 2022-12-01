@@ -1,6 +1,10 @@
+using Learning.Logging;
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Host.UseSerilog(SeriLogger.Configure);
 
 builder.Services.AddControllers();
 
