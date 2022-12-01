@@ -1,7 +1,6 @@
 ﻿using Bogus;
 using Learning.Domain.Entities;
 using Learning.Infrastructure.Data;
-
 using Microsoft.Extensions.Logging;
 
 namespace Learning.Infrastructure.Extensions;
@@ -53,7 +52,8 @@ public static class AppDbContextExtension
                 .RuleFor(u => u.ID, _ => moduleIds++)
                 .RuleFor(u => u.Name, f => f.Database.Engine())
                 .RuleFor(u => u.Description, f => f.Lorem.Random.Words(4))
-                .RuleFor(u => u.Order, _ => moduleOrder++);
+                .RuleFor(u => u.Order, _ => moduleOrder++)
+                .RuleFor(u => u.CourseID, f => f.Random.Int(1, 5));
 
             await context.Modules.AddRangeAsync(fakeCoursesSchema.Generate(10));
         }
