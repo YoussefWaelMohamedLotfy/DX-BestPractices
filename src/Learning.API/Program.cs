@@ -1,4 +1,6 @@
+using Learning.API.Extensions;
 using Learning.Infrastructure.Data;
+using Learning.Infrastructure.Extensions;
 using Learning.Infrastructure.Repositories;
 
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,12 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.MigrateDatabase<AppDbContext>(async (context, services) =>
+    {
+        var logger = services.GetRequiredService<ILogger<AppDbContext>>();
+        await context.SeedAsync(logger);
+    });
+
     app.UseSwagger();
     app.UseSwaggerUI();
 }
