@@ -16,9 +16,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning.API", "src\Learning.API\Learning.API.csproj", "{8669CA79-0E54-4076-8FCF-E7725274CF18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learning.Infrastructure", "src\Learning.Infrastructure\Learning.Infrastructure.csproj", "{BE54BEE2-1269-42A3-A163-2745B4C02DC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning.Infrastructure", "src\Learning.Infrastructure\Learning.Infrastructure.csproj", "{BE54BEE2-1269-42A3-A163-2745B4C02DC4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learning.Domain", "src\Learning.Domain\Learning.Domain.csproj", "{0809839A-C4C2-4B63-A3F5-95ED1A046F26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Learning.Domain", "src\Learning.Domain\Learning.Domain.csproj", "{0809839A-C4C2-4B63-A3F5-95ED1A046F26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Learning.Logging", "src\Learning.Logging\Learning.Logging.csproj", "{EB87DE2C-390A-4E99-B7BF-D09754C5C41C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{0809839A-C4C2-4B63-A3F5-95ED1A046F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0809839A-C4C2-4B63-A3F5-95ED1A046F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0809839A-C4C2-4B63-A3F5-95ED1A046F26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB87DE2C-390A-4E99-B7BF-D09754C5C41C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB87DE2C-390A-4E99-B7BF-D09754C5C41C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB87DE2C-390A-4E99-B7BF-D09754C5C41C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB87DE2C-390A-4E99-B7BF-D09754C5C41C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{8669CA79-0E54-4076-8FCF-E7725274CF18} = {539DF3DE-CA98-42D2-BA13-A9D36746A7A8}
 		{BE54BEE2-1269-42A3-A163-2745B4C02DC4} = {539DF3DE-CA98-42D2-BA13-A9D36746A7A8}
 		{0809839A-C4C2-4B63-A3F5-95ED1A046F26} = {539DF3DE-CA98-42D2-BA13-A9D36746A7A8}
+		{EB87DE2C-390A-4E99-B7BF-D09754C5C41C} = {539DF3DE-CA98-42D2-BA13-A9D36746A7A8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F3268A19-B9B7-4702-93C1-6E3C9E54FA90}
