@@ -44,7 +44,7 @@ public static class HostExtension
     {
         // Can be removed if the same database is needed
         // To be removed in Production
-        context.Database.EnsureDeleted();
+        //context.Database.EnsureDeleted();
 
         if (context.Database.GetPendingMigrations().Any())
         {

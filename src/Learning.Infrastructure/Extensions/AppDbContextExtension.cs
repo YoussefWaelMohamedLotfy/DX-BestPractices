@@ -40,7 +40,7 @@ public static class AppDbContextExtension
                 .RuleFor(u => u.Name, f => f.Database.Engine())
                 .RuleFor(u => u.Description, f => f.Lorem.Random.Words(4));
 
-            await context.Courses.AddRangeAsync(fakeCoursesSchema.Generate(5));
+            await context.Courses.AddRangeAsync(fakeCoursesSchema.Generate(105));
         }
 
         if (!context.Modules.Any())

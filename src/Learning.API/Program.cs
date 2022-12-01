@@ -10,6 +10,7 @@ using Learning.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Learning.API.FluentValidators;
+using Learning.Infrastructure.Interceptors;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,6 +34,8 @@ builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
     });
     options.EnableDetailedErrors(dbOptions.EnableDetailedErrors);
     options.EnableSensitiveDataLogging(dbOptions.EnableSensitiveDataLogging);
+
+    options.AddInterceptors(new MaxCountExceededInterceptor());
 })
     .AddScoped<CourseRepository>();
 
@@ -63,5 +66,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapGet("/Courses", async (CourseRepository repo, CancellationToken ct) =>
+{
+    var res = await repo.GetCourses(ct);
+    return Results.Ok(res);
+});
 
 app.Run();

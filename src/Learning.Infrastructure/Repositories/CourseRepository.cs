@@ -11,8 +11,11 @@ public sealed class CourseRepository
     public CourseRepository(AppDbContext context)
         => _context = context;
 
-    public async Task<Course?> GetCourseById(int id, CancellationToken ct = default!) 
+    public async ValueTask<Course?> GetCourseById(int id, CancellationToken ct = default!) 
         => await _context.Courses.FindAsync(new object[] { id }, ct);
+
+    public async Task<IEnumerable<Course>> GetCourses(CancellationToken ct = default!)
+        => await _context.Courses.AsNoTracking().ToListAsync(ct);
 
     public async Task<int> AddCourse(Course newEntity, CancellationToken ct = default!)
     {
