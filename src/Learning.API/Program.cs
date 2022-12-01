@@ -9,19 +9,25 @@ using Learning.Infrastructure.Repositories;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Learning.API.FluentValidators;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Host.UseSerilog(SeriLogger.Configure);
 
-builder.Services.ConfigureOptions<DatabaseOptionsSetup>();
+// Add services to the container.
+
+// See https://andrewlock.net/adding-validation-to-strongly-typed-configuration-objects-using-flentvalidation/
+builder.Services.AddWithValidation<DatabaseOptions, DatabaseOptionsValidator>("DatabaseOptions");
+
+// Another way to configure DatabaseOptions, See https://www.youtube.com/watch?v=bN57EDYD6M0
+//builder.Services.ConfigureOptions<DatabaseOptionsSetup>();
 
 builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
 {
     var dbOptions = serviceProvider.GetRequiredService<IOptions<DatabaseOptions>>().Value;
 
-    options.UseSqlite(dbOptions.ConnectionString, sqliteOptions =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("Default"), sqliteOptions =>
     {
         sqliteOptions.CommandTimeout(dbOptions.CommandTimeout);
     });

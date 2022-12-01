@@ -12,8 +12,6 @@ internal sealed class DatabaseOptionsSetup : IConfigureOptions<DatabaseOptions>
 
     public void Configure(DatabaseOptions options)
     {
-        options.ConnectionString = _configuration.GetConnectionString("Default");
-
         _configuration.GetSection(ConfigurationSectionName).Bind(options);
     }
 }

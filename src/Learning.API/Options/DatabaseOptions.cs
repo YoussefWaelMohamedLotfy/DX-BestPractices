@@ -2,8 +2,6 @@
 
 public sealed class DatabaseOptions
 {
-    public string? ConnectionString { get; set; }
-
     public int MaxRetryCount { get; set; }
     
     public int CommandTimeout { get; set; }
