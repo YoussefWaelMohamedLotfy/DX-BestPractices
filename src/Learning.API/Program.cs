@@ -48,8 +48,10 @@ if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
 {
     app.MigrateDatabase<AppDbContext>(async (context, services) =>
     {
+#if DEBUG
         var logger = services.GetRequiredService<ILogger<AppDbContext>>();
         await context.SeedAsync(logger);
+#endif
     });
 
     app.UseSwagger();

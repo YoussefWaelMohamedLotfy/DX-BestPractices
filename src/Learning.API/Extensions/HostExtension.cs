@@ -12,7 +12,7 @@ public static class HostExtension
             var services = scope.ServiceProvider;
             var logger = services.GetRequiredService<ILogger<TContext>>();
             var context = services.GetService<TContext>();
-
+            
             try
             {
                 logger.LogInformation("Migrating database associated with context {DbContextName}...", typeof(TContext).Name);
@@ -43,6 +43,7 @@ public static class HostExtension
                                                 IServiceProvider services) where TContext : DbContext
     {
         // Can be removed if the same database is needed
+        // To be removed in Production
         context.Database.EnsureDeleted();
 
         if (context.Database.GetPendingMigrations().Any())
