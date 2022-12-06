@@ -24,6 +24,8 @@ builder.Services.AddWithValidation<DatabaseOptions, DatabaseOptionsValidator>("D
 // Another way to configure DatabaseOptions, See https://www.youtube.com/watch?v=bN57EDYD6M0
 //builder.Services.ConfigureOptions<DatabaseOptionsSetup>();
 
+builder.Services.AddPagination(o => o.CanChangeSizeFromQuery = true);
+
 builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
 {
     var dbOptions = serviceProvider.GetRequiredService<IOptions<DatabaseOptions>>().Value;
@@ -69,7 +71,7 @@ app.MapControllers();
 
 app.MapGet("/Courses", async (CourseRepository repo, CancellationToken ct) =>
 {
-    var res = await repo.GetCourses(ct);
+    var res = await repo.GetCoursesKeysetPaginated(ct);
     return Results.Ok(res);
 });
 
