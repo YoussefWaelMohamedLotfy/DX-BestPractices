@@ -43,12 +43,13 @@ builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
 })
     .AddScoped<CourseRepository>();
 
-builder.Services.Configure<JsonOptions>(opt =>
-{
-    opt.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
-});
+// Use this config when using Minimal APIs
+//builder.Services.Configure<JsonOptions>(opt
+//    => opt.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    // This config is for Controller Style APIs
+    .AddJsonOptions(o => o.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -75,11 +76,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.MapGet("/Courses", async (CourseRepository repo, CancellationToken ct) =>
-{
-    var res = await repo.GetCoursesKeysetPaginated(ct);
-    return Results.Ok(res);
-});
 
 app.Run();
