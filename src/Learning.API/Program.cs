@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Learning.API.FluentValidators;
 using Learning.Infrastructure.Interceptors;
+using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Http.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +42,11 @@ builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
     options.AddInterceptors(new MaxCountExceededInterceptor());
 })
     .AddScoped<CourseRepository>();
+
+builder.Services.Configure<JsonOptions>(opt =>
+{
+    opt.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+});
 
 builder.Services.AddControllers();
 
