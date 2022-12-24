@@ -13,6 +13,7 @@ using Learning.API.FluentValidators;
 using Learning.Infrastructure.Interceptors;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http.Json;
+using Mapster;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,7 +48,7 @@ builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
 //builder.Services.Configure<JsonOptions>(opt
 //    => opt.SerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(/*o => o.InputFormatters.Insert(0, null)*/)
     // This config is for Controller Style APIs
     .AddJsonOptions(o => o.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
 
