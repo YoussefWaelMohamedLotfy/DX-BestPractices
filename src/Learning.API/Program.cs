@@ -40,7 +40,7 @@ builder.Services.AddDbContextPool<AppDbContext>((serviceProvider, options) =>
     options.EnableDetailedErrors(dbOptions.EnableDetailedErrors);
     options.EnableSensitiveDataLogging(dbOptions.EnableSensitiveDataLogging);
 
-    options.AddInterceptors(new MaxCountExceededInterceptor());
+    options.AddInterceptors(new MaxCountExceededInterceptor(), new SuppressDeletesWithoutWhereInterceptor());
 })
     .AddScoped<CourseRepository>();
 
